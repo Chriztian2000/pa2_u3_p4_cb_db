@@ -56,6 +56,7 @@ public class HotelRepoImpl implements IHotelRepo {
 				.createQuery("SELECT ha FROM Hotel h LEFT JOIN h.habitaciones ha ", Habitacion.class);
 		return myQuery.getResultList();
 	}
+	
 
 	public List<Hotel> seleccionaHotelOuterFullJoin() {
 
