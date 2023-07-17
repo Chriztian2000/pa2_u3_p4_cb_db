@@ -23,6 +23,7 @@ public class Alumno {
 	@GeneratedValue(generator = "seq_alumno", strategy = GenerationType.SEQUENCE)
 	@Column(name = "alum_id")
 	private Integer id;
+	
 	@Column(name = "alum_nombre")
 	private String nombre;
 

@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.demo.repo.modelo.Habitacion;
 import com.example.demo.repo.modelo.Hotel;
 
-public interface IHotelRepo {
+public interface HotelRepo {
 
 	/*
 	 * public void insertar(Hotel hotel); public void actualizar(Hotel hotel);
@@ -29,6 +29,10 @@ public interface IHotelRepo {
 	
 	//join where
 	public List<Hotel> selecionaHotelJoinWhere();
+	
+	public List<Hotel> selecionaHotelJoinFetch();
+	
+	public void insertarHotel(Hotel hotel);
 	
 
 }

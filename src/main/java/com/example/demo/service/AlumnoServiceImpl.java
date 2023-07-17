@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.repo.AlumnoRepo;
 import com.example.demo.repo.modelo.Alumno;
 
-@Service
+@Service 
 public class AlumnoServiceImpl implements AlumnoService {
 
 	@Autowired

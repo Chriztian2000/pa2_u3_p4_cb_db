@@ -1,5 +1,6 @@
 package com.example.demo.repo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -14,7 +15,7 @@ import jakarta.transaction.Transactional;
 
 @Repository
 @Transactional
-public class HotelRepoImpl implements IHotelRepo {
+public class HotelRepoImpl implements HotelRepo {
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -30,6 +31,12 @@ public class HotelRepoImpl implements IHotelRepo {
 
 		TypedQuery<Hotel> myQuery = this.entityManager
 				.createQuery("SELECT h FROM Hotel h INNER JOIN h.habitaciones ha ", Hotel.class);
+		
+		List<Hotel> listaHoteles = myQuery.getResultList();
+		for (Hotel h : listaHoteles) {
+			h.getHabitaciones().size();
+		}
+		
 		return myQuery.getResultList();
 	}
 
@@ -75,6 +82,24 @@ public class HotelRepoImpl implements IHotelRepo {
 		TypedQuery<Hotel> myQuery = this.entityManager
 				.createQuery("SELECT h FROM Hotel h, Habitacion ha WHERE h =ha.hotel", Hotel.class);
 		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Hotel> selecionaHotelJoinFetch() {
+		TypedQuery<Hotel> myQuery = this.entityManager
+				.createQuery("SELECT h FROM Hotel h JOIN FETCH h.habitaciones ha ", Hotel.class);
+		
+	
+		
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public void insertarHotel(Hotel hotel) {
+		
+		
+		this.entityManager.persist(hotel);
+		
 	}
 
 }

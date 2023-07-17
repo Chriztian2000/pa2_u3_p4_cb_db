@@ -25,7 +25,7 @@ public class Matricula {
 	private Integer id;
 	@Column(name = "matri_fecha")
 	private LocalDateTime fecha;
-	@Column(name = "matri_numero")
+	@Column(name = "matri_numero") 
 	private String numero;
 
 	@ManyToOne()

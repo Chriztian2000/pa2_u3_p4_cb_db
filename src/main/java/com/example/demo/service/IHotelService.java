@@ -21,4 +21,8 @@ public interface IHotelService {
 	
 	public List<Hotel> buscarHotelJoinWhere();
 
+	public List<Hotel> buscarHotelJoinFetch();
+	
+	public void guardarHotel(Hotel hotel);
+	
 }
