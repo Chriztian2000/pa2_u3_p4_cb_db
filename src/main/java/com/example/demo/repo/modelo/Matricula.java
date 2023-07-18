@@ -14,27 +14,33 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-@Table(name = "matricula")
 @Entity
+@Table(name = "matricula")
 public class Matricula {
 
 	@Id
-	@SequenceGenerator(name = "seq_matricula", sequenceName = "seq_matricula", allocationSize = 1)
-	@GeneratedValue(generator = "seq_matricula", strategy = GenerationType.SEQUENCE)
-	@Column(name = "matri_id")
+    @SequenceGenerator(name = "seq_matricula", sequenceName = "seq_matricula", allocationSize = 1)
+    @GeneratedValue(generator = "seq_matricula", strategy = GenerationType.SEQUENCE)
+    @Column(name = "mtcl_id")   
 	private Integer id;
-	@Column(name = "matri_fecha")
+	
+	@Column(name = "mtcl_fecha")
 	private LocalDateTime fecha;
-	@Column(name = "matri_numero") 
+	
+	@Column(name = "mtcl_numero")
 	private String numero;
-
-	@ManyToOne()
-	@JoinColumn(name = "matri_id_alumno")
-	private Alumno alumno;
-
 	
+	@Column(name = "mtcl_gratuidad")
+	private String gratuidad;
 	
-	//GET Y SET
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name ="matricula_id_estudiante")
+	private Estudiante estudiante;
+	
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name ="matricula_id_materia")
+	private Materia materia;
+
 	public Integer getId() {
 		return id;
 	}
@@ -59,20 +65,37 @@ public class Matricula {
 		this.numero = numero;
 	}
 
-	
-	
-	
+	public String getGratuidad() {
+		return gratuidad;
+	}
+
+	public void setGratuidad(String gratuidad) {
+		this.gratuidad = gratuidad;
+	}
+
+	public Estudiante getEstudiante() {
+		return estudiante;
+	}
+
+	public void setEstudiante(Estudiante estudiante) {
+		this.estudiante = estudiante;
+	}
+
+	public Materia getMateria() {
+		return materia;
+	}
+
+	public void setMateria(Materia materia) {
+		this.materia = materia;
+	}
 
 	@Override
 	public String toString() {
-		return "Matricula [id=" + id + ", fecha=" + fecha + ", numero=" + numero + "]";
+		return "Matricula [id=" + id + ", fecha=" + fecha + ", numero=" + numero + ", gratuidad=" + gratuidad
+				+"]";
 	}
-
-
 	
 	
 	
 	
-	
-
 }
