@@ -2,11 +2,14 @@ package com.example.funcional;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.persistence.criteria.Predicate;
 
 public class Main {
 
@@ -151,6 +154,20 @@ public class Main {
         listaNombresMayusculas.forEach(MetodosReferenciados::convertirAMayusculas);
 
         List<Integer> listaNumerosIncrementados = Arrays.asList(5, 10, 15, 20, 25);
+        
+       
+
+        // Function
+        LOG.info("\n\n\t Metodos HighOrder Function");
+        Function<Integer, String> functionHO1 = num -> "Resultado: " + (num * 2);
+        String result1 = functionHO1.apply(50);
+        LOG.info(result1);
+
+        // UnaryOperator
+        LOG.info("\n\n\t Metodos HighOrder UnaryOperator");
+        UnaryOperator<Integer> unaryOperatorHO1 = num -> num * 2;
+        Integer result2 = unaryOperatorHO1.apply(15);
+        LOG.info("Resultado: " + result2);
 
 	}
 
