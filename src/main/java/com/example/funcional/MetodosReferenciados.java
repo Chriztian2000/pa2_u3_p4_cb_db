@@ -39,5 +39,41 @@ public class MetodosReferenciados {
 		
 	}
 	
+	// SUPPLIER
+    public static String saludoAleatorio() {
+        String[] saludos = {"Hola", "¡Buenos días!", "Saludos", "¡Hola a todos!"};
+        int indice = (int) (Math.random() * saludos.length);
+        return saludos[indice];
+    }
+
+    // CONSUMER
+    public static void saludoPersonalizado(String nombre) {
+        LOG.info("Hola, " + nombre + ". ¡Bienvenido!");
+    }
+
+    // PREDICATE
+    public static boolean esPositivo(Integer num) {
+        boolean resultado = num > 0;
+        if (resultado) {
+            LOG.info("El número " + num + " es positivo.");
+        } else {
+            LOG.info("El número " + num + " no es positivo.");
+        }
+        return resultado;
+    }
+
+    // FUNCTION
+    public static String convertirAMayusculas(String nombre) {
+        String mayusculas = nombre.toUpperCase();
+        LOG.info("Nombre en mayúsculas: " + mayusculas);
+        return mayusculas;
+    }
+
+    // UnaryOperator
+    public static Integer restarUno(Integer num) {
+        int resultado = num - 1;
+        LOG.info("Número " + num + " - 1 = " + resultado);
+        return resultado;
+    }
 	
 }

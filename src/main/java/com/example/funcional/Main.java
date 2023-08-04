@@ -1,5 +1,10 @@
 package com.example.funcional;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -129,7 +134,26 @@ public class Main {
 
 		// mientras yo tenga un metodo que cumpla el contrato de la ninterfan funcional
 		// yo le puedo pasar como una implementacion de la interfaz funcional
+		
+		
+		 // SUPPLIER
+		// SUPPLIER
+		Stream<String> listaSaludos = Stream.generate(MetodosReferenciados::saludoAleatorio).limit(3);
+        listaSaludos.forEach(LOG::info);
+
+        List<String> listaNombres = Arrays.asList("Juan", "Ana", "Pedro", "María");
+        listaNombres.forEach(MetodosReferenciados::saludoPersonalizado);
+
+        List<Integer> listaNumerosPositivos = Arrays.asList(0, -1, 5, -7, 10, 15, -20);
+        listaNumerosPositivos.forEach(MetodosReferenciados::esPositivo);
+
+        List<String> listaNombresMayusculas = Arrays.asList("Carlos", "Lucía", "Fernando");
+        listaNombresMayusculas.forEach(MetodosReferenciados::convertirAMayusculas);
+
+        List<Integer> listaNumerosIncrementados = Arrays.asList(5, 10, 15, 20, 25);
 
 	}
+
+
 
 }
